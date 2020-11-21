@@ -19,4 +19,4 @@ Route::get('/about', function () {
 })->name('about');
 
 
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';

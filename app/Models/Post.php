@@ -13,4 +13,8 @@ class Post extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function category_post()
+    {
+        return $this->hasOne(CategoryPost::class);
+    }
 }
