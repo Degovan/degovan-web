@@ -9,12 +9,17 @@ class Post extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'user_id', 'category_post_id', 'title', 'slug', 'body',
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);
     }
+
     public function category_post()
     {
-        return $this->hasOne(CategoryPost::class);
+        return $this->belongsTo(CategoryPost::class);
     }
 }
