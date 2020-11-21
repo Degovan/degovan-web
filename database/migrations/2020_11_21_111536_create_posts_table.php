@@ -23,9 +23,9 @@ class CreatePostsTable extends Migration
         });
 
         Schema::table('posts', function (Blueprint $table) {
-            $table->integer('id_category_posts')->unsigned()->after('user_id');
+            $table->integer('category_post_id')->unsigned()->after('user_id');
 
-            $table->foreign('id_category_posts')
+            $table->foreign('category_post_id')
                   ->references('id')
                   ->on('category_posts');
         });
