@@ -30,16 +30,38 @@
                     <span>Dashboard</span>
                 </a>
             </li>
+            <li class="nav-item ">
+                <span class="nav-link  collapsed  d-flex justify-content-between align-items-center"
+                    data-toggle="collapse" data-target="#member-app">
+                    <span>
+                        <span class="sidebar-icon"><span class="fas fa-users"></span></span>
+                        Member
+                    </span>
+                    <span class="link-arrow"><span class="fas fa-chevron-right"></span></span>
+                </span>
+                <div class="multi-level collapse  {{ (request()->is('admin/member*')) ? 'show' : ''  }}" role="list"
+                    id="member-app" aria-expanded="false">
+                    <ul class="flex-column nav">
+                        <li class="nav-item  {{ (Request::route()->getName() == 'member.create' ? 'active' : '')  }}"><a
+                                class="nav-link" href="{{ route('member.create') }}"><span>Tambah
+                                    Member</span></a></li>
+                        <li class="nav-item  {{ (Request::route()->getName() == 'member.index' ? 'active' : '')}}
+                                                {{ (Request::route()->getName() == 'member.show' ? 'active' : '') }}
+                                                "><a class="nav-link" href="{{ route('member.index') }}"><span>Data
+                                    Member</span></a></li>
+                    </ul>
+                </div>
+            </li>
             <li class="nav-item">
                 <span class="nav-link  collapsed  d-flex justify-content-between align-items-center"
-                    data-toggle="collapse" data-target="#submenu-app">
+                    data-toggle="collapse" data-target="#artikel-app">
                     <span>
                         <span class="sidebar-icon"><span class="fas fa-table"></span></span>
                         Artikel
                     </span>
                     <span class="link-arrow"><span class="fas fa-chevron-right"></span></span>
                 </span>
-                <div class="multi-level collapse " role="list" id="submenu-app" aria-expanded="false">
+                <div class="multi-level collapse " role="list" id="artikel-app" aria-expanded="false">
                     <ul class="flex-column nav">
                         <li class="nav-item "><a class="nav-link" href="#"><span>Data Artikel</span></a></li>
                     </ul>
@@ -47,17 +69,18 @@
             </li>
             <li class="nav-item">
                 <span class="nav-link  collapsed  d-flex justify-content-between align-items-center"
-                    data-toggle="collapse" data-target="#submenu-app">
+                    data-toggle="collapse" data-target="#portfolio-app">
                     <span>
                         <span class="sidebar-icon"><span class="fas fa-image"></span></span>
                         Portfolio
                     </span>
                     <span class="link-arrow"><span class="fas fa-chevron-right"></span></span>
                 </span>
-                <div class="multi-level collapse " role="list" id="submenu-app" aria-expanded="false">
+                <div class="multi-level collapse " role="list" id="portfolio-app" aria-expanded="false">
                     <ul class="flex-column nav">
                         <li class="nav-item "><a class="nav-link" href="#"><span>Data Portfolio</span></a></li>
-                        <li class="nav-item "><a class="nav-link" href="{{ route('categories.index') }}"><span>Data Kategori</span></a></li>
+                        <li class="nav-item "><a class="nav-link" href="{{ route('categories.index') }}"><span>Data
+                                    Kategori</span></a></li>
                     </ul>
                 </div>
             </li>
