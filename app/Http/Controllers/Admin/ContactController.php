@@ -16,7 +16,20 @@ class ContactController extends Controller
      */
     public function index()
     {
-        return view('admin.contact.index');
+        if(request()->ajax()){
+            return DataTables::of(Contact::query())
+                ->editColumn('created_at', function($contact){
+                    return $contact->created_at->diffForHumans();
+                })
+                ->addColumn('action', function($contact){
+                    return view('admin.contact.partials.action-button', [
+                        'contact' => $contact
+                    ]);
+                })
+                ->make(true);
+        }else{
+            return view('admin.contact.index');   
+        }
     }
 
     /**
@@ -88,19 +101,5 @@ class ContactController extends Controller
             'type' => 'success',
             'msg' => 'Data telah terhapus'
         ]);
-    }
-
-    public function json()
-    {
-        return DataTables::of(Contact::get())
-            ->editColumn('created_at', function($contact){
-                return $contact->created_at->diffForHumans();
-            })
-            ->addColumn('action', function($contact){
-                return view('admin.contact.partials.action-button', [
-                    'contact' => $contact
-                ]);
-            })
-            ->make(true);
     }
 }

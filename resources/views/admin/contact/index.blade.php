@@ -59,12 +59,12 @@
 	$('#contact-table').DataTable({
 		processing: true,
 		serverSide: true,
-		ajax: "{{ route('admin.contact.json') }}",
+		ajax: "{{ route('admin.contact.index') }}",
 		columns: [
-		{data: 'full_name', name: 'full_name'},
-		{data: 'email', name: 'email'},
-		{data: 'created_at', name: 'created_at'},
-		{data: 'action', name: 'action'}
+			{data: 'full_name', name: 'full_name'},
+			{data: 'email', name: 'email'},
+			{data: 'created_at', name: 'created_at'},
+			{data: 'action', name: 'action'}
 		]
 	});
 

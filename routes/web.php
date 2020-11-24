@@ -11,7 +11,6 @@ Route::prefix('admin')
         Route::get('dashboard', DashboardController::class)->name('dashboard');
         Route::resource('member', MemberController::class);
         Route::resource('portofolio/categories', CategoryController::class);
-        Route::get('contact/json', [ContactController::class, 'json'])->name('admin.contact.json');
         Route::resource('contact', ContactController::class, [
         	'as' => 'admin'
         ]);
