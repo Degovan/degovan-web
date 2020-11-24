@@ -84,6 +84,12 @@
                     </ul>
                 </div>
             </li>
+            <li class="nav-item {{ (request()->is('admin/contact')) ? 'active' : '' }}">
+                <a href="{{ route('admin.contact.index') }}" class="nav-link">
+                    <span class="sidebar-icon"><span class="fas fa-envelope"></span></span>
+                    <span>Kontak</span>
+                </a>
+            </li>
 
 
         </ul>

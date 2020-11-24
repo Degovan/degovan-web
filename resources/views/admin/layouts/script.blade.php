@@ -8,9 +8,6 @@
 <!-- JQuery JS -->
 <script src="{{ asset('assets/vendor/jquery/jquery-3.5.1.min.js') }}"></script>
 
-<!-- DataTables JS -->
-
-
 <!-- Slider -->
 <script src="{{ asset('assets/vendor/nouislider/distribute/nouislider.min.js') }}"></script>
 

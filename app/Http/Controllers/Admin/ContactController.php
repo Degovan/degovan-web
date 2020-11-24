@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Contact;
+use DataTables;
 
 class ContactController extends Controller
 {
@@ -15,7 +16,7 @@ class ContactController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.contact.index');
     }
 
     /**
@@ -47,7 +48,7 @@ class ContactController extends Controller
      */
     public function show(Contact $contact)
     {
-        //
+        return view('admin.contact.show', compact('contact'));
     }
 
     /**
@@ -58,7 +59,7 @@ class ContactController extends Controller
      */
     public function edit(Contact $contact)
     {
-        //
+        
     }
 
     /**
@@ -81,6 +82,25 @@ class ContactController extends Controller
      */
     public function destroy(Contact $contact)
     {
-        //
+        $contact->delete();
+
+        echo json_encode([
+            'type' => 'success',
+            'msg' => 'Data telah terhapus'
+        ]);
+    }
+
+    public function json()
+    {
+        return DataTables::of(Contact::get())
+            ->editColumn('created_at', function($contact){
+                return $contact->created_at->diffForHumans();
+            })
+            ->addColumn('action', function($contact){
+                return view('admin.contact.partials.action-button', [
+                    'contact' => $contact
+                ]);
+            })
+            ->make(true);
     }
 }
