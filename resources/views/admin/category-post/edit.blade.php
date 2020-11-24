@@ -1,0 +1,50 @@
+@extends('admin.layouts.app',['title' => 'Create Member'])
+
+@section('content')
+
+<div class="py-4">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-dark breadcrumb-transparent">
+            <li class="breadcrumb-item"><a href="#"><span class="fas fa-home"></span></a></li>
+            <li class="breadcrumb-item"><a href="{{ route('admin.post.category.index') }}">Kategori Artikel</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Edit Kategori Artikel</li>
+        </ol>
+    </nav>
+</div>
+
+<div class="row">
+    <div class="col-lg-6 mb-4">
+        <div class="card border-light shadow-sm components-section">
+            <div class="card-body">
+                <form action="{{ route('admin.post.category.update', $category->id) }}" method="post">
+                    @csrf
+                    @method('PUT')
+                    <div class="row mb-4">
+                        <div class="col-">
+                            <div class="mb-3">
+                                <label for="name">Nama Kategori Artikel <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Nama Kategori Artikel" autocomplete="off" id="name" name="name" value="{{ old('name') ? old('name') : $category->name}}">
+                                @error('name')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+
+                            <div class="mb-3 d-flex justify-content-between">
+                                <div>
+                                    <button type="submit" class="btn btn-secondary text-dark">Update</button>
+                                    <button type="reset" class="btn btn-light ml-2">Reset</button>
+                                </div>
+                                <div>
+                                    <a href="{{ route('admin.post.category.index') }}" class="btn btn-dark">Kembali</a>
+                                </div>
+                            </div>
+                        </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@endsection

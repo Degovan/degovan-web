@@ -9,8 +9,6 @@ class CategoryPost extends Model
 {
     use HasFactory;
 
-    protected $table = 'category_posts';
-
     protected $fillable = [
         'name', 'slug',
     ];

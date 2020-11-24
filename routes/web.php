@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\{CategoryController, ContactController, DashboardController, MemberController};
+use App\Http\Controllers\Admin\{CategoryController, ContactController, DashboardController, MemberController, CategoryPostController};
 
 
 // Route Admin
@@ -13,6 +13,9 @@ Route::prefix('admin')
         Route::resource('portofolio/categories', CategoryController::class);
         Route::resource('contact', ContactController::class, [
         	'as' => 'admin'
+        ]);
+        Route::resource('post/category', CategoryPostController::class, [
+            'as' => 'admin.post'
         ]);
     });
 
