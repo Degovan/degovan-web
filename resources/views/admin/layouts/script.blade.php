@@ -9,8 +9,7 @@
 <script src="{{ asset('assets/vendor/jquery/jquery-3.5.1.min.js') }}"></script>
 
 <!-- DataTables JS -->
-<script src="{{ asset('assets/vendor/datatables/js/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('assets/vendor/datatables/js/dataTables.bootstrap5.min.js') }}"></script>
+
 
 <!-- Slider -->
 <script src="{{ asset('assets/vendor/nouislider/distribute/nouislider.min.js') }}"></script>
