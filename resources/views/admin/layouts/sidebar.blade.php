@@ -56,7 +56,8 @@
                 </span>
                 <div class="multi-level collapse " role="list" id="submenu-app" aria-expanded="false">
                     <ul class="flex-column nav">
-                        <li class="nav-item "><a class="nav-link" href="#"><span>Data Portfolio/span></a></li>
+                        <li class="nav-item "><a class="nav-link" href="#"><span>Data Portfolio</span></a></li>
+                        <li class="nav-item "><a class="nav-link" href="{{ route('categories.index') }}"><span>Data Kategori</span></a></li>
                     </ul>
                 </div>
             </li>

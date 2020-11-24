@@ -1,13 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\{DashboardController};
+use App\Http\Controllers\Admin\{CategoryController, DashboardController};
+
 
 // Route Admin
 Route::prefix('admin')
     ->middleware('auth')
     ->group(function () {
         Route::get('dashboard', DashboardController::class)->name('dashboard');
+        Route::resource('portofolio/categories', CategoryController::class);
     });
 
 // Route Web

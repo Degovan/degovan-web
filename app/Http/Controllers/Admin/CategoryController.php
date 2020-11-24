@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\DataTables\CategoriesDataTable;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use Illuminate\Support\Str;
 
 
 class CategoryController extends Controller
@@ -14,9 +16,9 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(CategoriesDataTable $dataTable)
     {
-        //
+        return $dataTable->render('admin.categories.index');
     }
 
     /**
@@ -26,7 +28,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view ('admin.categories.create');
     }
 
     /**
@@ -37,7 +39,14 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $attr = request()->all();
+        // dd($attr);
+
+        $attr['slug'] = Str::slug(request('name'));
+        Category::create($attr);
+
+        return back();
+
     }
 
     /**
@@ -48,7 +57,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        
     }
 
     /**

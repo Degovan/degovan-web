@@ -10,7 +10,7 @@
     <meta name="robots" content="all,follow">
 
     @include('admin.layouts.style')
-    <title> @yield('title') </title>
+    <title>Admin - {{ $title ?? ' ' }} </title>
 </head>
 
 
