@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\DataTables\CategoriesDataTable;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CategoryRequest;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\CategoryPost;
 use Illuminate\Support\Str;
-
+use Yajra\DataTables\DataTables;
 
 class CategoryController extends Controller
 {
@@ -16,9 +18,29 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(CategoriesDataTable $dataTable)
+    // public function index(CategoriesDataTable $dataTable)
+    // {
+    //     return $dataTable->render('admin.categories.index');
+    // }
+
+    public function index()
     {
-        return $dataTable->render('admin.categories.index');
+        return view('admin.categories.index');
+    }
+
+    public function json()
+    {   
+        $categories = Category::get();
+        return Datatables::of($categories)
+                            ->editColumn('created_at', function($category){
+                                return $category->created_at->diffForHumans();
+                            })
+                            ->addColumn('action', function ($category){
+                                return view('admin.categories.partials.action-button', [
+                                    'category' => $category
+                                ]);
+                            })
+                            ->make(true);
     }
 
     /**
@@ -28,7 +50,9 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view ('admin.categories.create');
+        return view ('admin.categories.create',[
+            'category' => new Category()
+        ]);
     }
 
     /**
@@ -37,7 +61,7 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
         $attr = request()->all();
         // dd($attr);
@@ -68,7 +92,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('admin.categories.edit', compact('category'));
     }
 
     /**
@@ -78,9 +102,12 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(CategoryRequest $request, Category $category)
     {
-        //
+        $attr = request()->all();
+        $category->update($attr);
+
+        return back();
     }
 
     /**
@@ -89,8 +116,11 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
-        //
+        $categoryId = Category::find($id);
+        $categoryId->delete();
+      
+        return back();
     }
 }

@@ -1,16 +1,18 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\{CategoryController, DashboardController};
-
+use App\Http\Controllers\Admin\{CategoryController, DashboardController, PortofolioController};
 
 // Route Admin
 Route::prefix('admin')
     ->middleware('auth')
     ->group(function () {
         Route::get('dashboard', DashboardController::class)->name('dashboard');
+        Route::resource('portofolios', PortofolioController::class);
         Route::resource('portofolio/categories', CategoryController::class);
     });
+
+    Route::get('/portofolio/json', [CategoryController::class, 'json' ])->name('admin.categories.json');
 
 // Route Web
 Route::get('/', function () {

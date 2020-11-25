@@ -1,4 +1,4 @@
-@extends('admin.layouts.app', ['title' => 'Kategori'])
+@extends('admin.layouts.app', ['title' => 'Tambah Kategori'])
 
 @section('content')
 <div class="py-4">
@@ -25,7 +25,7 @@
             <div class="card-body">
                 <form action="{{ route('categories.store') }}" method="POST" autocomplete="off">
                     @csrf
-                    @include('admin.categories.partials.form-control')
+                    @include('admin.categories.partials.form-control', ['button' => 'simpan'])
                 </form>
             </div>
         </div>
