@@ -1,4 +1,4 @@
-@extends('admin.layouts.app', ['title' => 'Dashboard'])
+@extends('admin.layouts.app', ['title' => 'Kategori'])
 
 @section('content')
 
@@ -25,9 +25,16 @@
             </div>
         </div>
 
-
-        <table class="table table-bordered" id="categories-table">
-            {{ $dataTable->table() }} 
+        <table class="table table-bordered shadow-sm" id="categories-table">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Name</th>
+                    <th>Created At</th>
+                    <th>Updated At</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
         </table>
     </div>
 </div>
@@ -35,22 +42,24 @@
 @endsection
 
 @push('scripts')
-{{$dataTable->scripts()}}
 <script src="{{ mix('js/app.js') }}"></script>
 <script src="{{ asset('vendor/datatables/buttons.server-side.js') }}"></script>
 
-{{-- <script>
-    $(function () {
-        $('categories-table').DataTable({
-            processing: true,
-            serverSide: true,
-            ajax: '{!! route('categories.index') !!}',
-            columns: [
-                { data: 'id', name: 'id' },
-                { data: 'name', name: 'name' },
-                { data: 'name', name: 'name' },
+<script>
+    $(function(){
+        $('#categories-table').DataTable({
+            processing : true,
+            serverSide : true,
+            ajax : '{!! route('admin.categories.json') !!}',
+
+            columns : [
+                {data : 'id' , name : 'id'},
+                {data : 'name' , name : 'name'},
+                {data : 'created_at', name : 'created_at'},
+                {data : 'updated_at' , name : 'updated_at'},
+                {data : 'action', name : 'action', orderable : false, searchable : false}
             ]
         })
     })
-</script> --}}
+</script>
 @endpush

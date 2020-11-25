@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\{Category, Service, Portofolio};
 use Illuminate\Http\Request;
-use App\Models\Portofolio;
+use Illuminate\Support\Str;
 
 class PortofolioController extends Controller
 {
@@ -15,7 +16,7 @@ class PortofolioController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.portofolios.index');
     }
 
     /**
@@ -25,7 +26,10 @@ class PortofolioController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.portofolios.create',[
+            'categories' => Category::get(),
+            'services'   => Service::get()
+        ]);
     }
 
     /**
@@ -36,7 +40,13 @@ class PortofolioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $attr = request()->all();
+        
+        $attr['slug'] = Str::slug(request('title'));
+
+        Portofolio::create($attr);
+
+        return back();
     }
 
     /**

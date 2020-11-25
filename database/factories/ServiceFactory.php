@@ -22,8 +22,13 @@ class ServiceFactory extends Factory
      */
     public function definition()
     {
+        $name = $this->faker->sentence();
+
         return [
-            //
+            'name' => $name,
+            'slug' => Str::slug($name),
+            'description' => $this->faker->text(),
+            'images' => $this->faker->imageUrl($width = 640, $height = 480) 
         ];
     }
 }
