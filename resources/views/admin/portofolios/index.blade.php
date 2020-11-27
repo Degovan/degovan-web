@@ -26,16 +26,44 @@
         </div>
 
 
-        <table class="table table-bordered" id="categories-table">
-            {{-- {{ $dataTable->table() }}  --}}
+        <table class="table table-bordered" id="portofolios-table">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Name</th>
+                    <th>Kategori</th>
+                    <th>Layanan</th>
+                    <th>Created At</th>
+                    <th>Updated At</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
         </table>
     </div>
 </div>
 
 @endsection
 
-@push('scripts')
+@push('addon-script')
 {{-- {{$dataTable->scripts()}} --}}
 <script src="{{ mix('js/app.js') }}"></script>
 <script src="{{ asset('vendor/datatables/buttons.server-side.js') }}"></script>
+
+
+<script>
+$(function(){
+    $('#portofolios-table').DataTable({
+        processing : true,
+        serverSide : true,
+        ajax       : '{!! route('admin.portofolio.json') !!}',
+
+        columns : [
+            {data : 'id' , name : 'id'},
+            {data : 'title', name : 'title'},
+            {data : 'category', name : 'categories.category_id'},
+            {data : 'service', name : 'service_id'},
+        ]
+    });
+})
+</script>
 @endpush

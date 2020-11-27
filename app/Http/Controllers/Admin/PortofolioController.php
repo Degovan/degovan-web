@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\{Category, Service, Portofolio};
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Yajra\DataTables\DataTables;
+
 
 class PortofolioController extends Controller
 {
@@ -17,6 +19,23 @@ class PortofolioController extends Controller
     public function index()
     {
         return view('admin.portofolios.index');
+    }
+
+    public function json(Request $request)
+    {
+
+        if($request->ajax()) {
+        $portofolios = Portofolio::with('category')
+                                    ->select('portofolios.*');
+        // dd($portofolios);
+        return Datatables::of($portofolios)
+                            ->addColumn('action', function($portofolio){
+                                return view('admin.portofolios.partials.action-button',[
+                                    'portofolio' => $portofolio
+                                ]);
+                            })
+                            ->make(true);
+        }
     }
 
     /**
