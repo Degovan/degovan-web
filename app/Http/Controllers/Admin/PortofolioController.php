@@ -25,15 +25,28 @@ class PortofolioController extends Controller
     {
 
         if($request->ajax()) {
-        $portofolios = Portofolio::with('category')
-                                    ->select('portofolios.*');
-        // dd($portofolios);
+        $portofolios = Portofolio::query();
+
         return Datatables::of($portofolios)
+                            ->addColumn('category', function($portofolio){
+                                return '
+                                    <a href="'.route('admin.categories.show', $portofolio->category->id).'">'.$portofolio->category->name.'</a>
+                                ';
+                            })
+                            ->addColumn('service', function($portofolio){
+                                return '
+                                    <a href="/admin/service/'.$portofolio->service->id.'">'.$portofolio->service->name.'</a>
+                                ';
+                            })
+                            ->editColumn('created_at', function($portofolio){
+                                return $portofolio->created_at->diffForHumans();
+                            })
                             ->addColumn('action', function($portofolio){
                                 return view('admin.portofolios.partials.action-button',[
                                     'portofolio' => $portofolio
                                 ]);
                             })
+                            ->rawColumns(['category', 'service'])
                             ->make(true);
         }
     }
