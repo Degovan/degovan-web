@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\TagRequest;
 use App\Models\Tag;
+use Illuminate\Support\Str;
+use Yajra\DataTables\Facades\DataTables;
 
 class TagController extends Controller
 {
@@ -15,7 +18,14 @@ class TagController extends Controller
      */
     public function index()
     {
-        //
+        if(request()->ajax()) {
+            return DataTables::of(Tag::query())
+                ->addColumn('action', function($tag) {
+                    return view('admin.tag.partials.action-button', ['tag' => $tag]);
+                })->make(true);
+        }
+
+        return view('admin.tag.index');
     }
 
     /**
@@ -25,7 +35,7 @@ class TagController extends Controller
      */
     public function create()
     {
-        //
+        return view ('admin.tag.create');
     }
 
     /**
@@ -34,9 +44,14 @@ class TagController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TagRequest $request)
     {
-        //
+        Tag::create([
+            'name' => $request->name,
+            'slug' => Str::slug($request->name),
+        ]);
+
+        return redirect()->route('admin.post.tag.index')->with('status', 'Tag Artikel ' . $request->name . ' telah ditambahkan');
     }
 
     /**
@@ -47,7 +62,7 @@ class TagController extends Controller
      */
     public function show(Tag $tag)
     {
-        //
+        return abort(404);
     }
 
     /**
@@ -58,7 +73,7 @@ class TagController extends Controller
      */
     public function edit(Tag $tag)
     {
-        //
+        return view ('admin.tag.edit', ['tag' => $tag]);
     }
 
     /**
@@ -68,9 +83,13 @@ class TagController extends Controller
      * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tag $tag)
+    public function update(TagRequest $request, Tag $tag)
     {
-        //
+        $tag->update([
+            'name'  => $request->name,
+        ]);
+
+        return redirect()->route('admin.post.tag.index')->with('status', 'Tag Artikel ' . $request->name . ' telah Diupdate');
     }
 
     /**
@@ -81,6 +100,8 @@ class TagController extends Controller
      */
     public function destroy(Tag $tag)
     {
-        //
+        Tag::destroy($tag->id);
+        return redirect()->route('admin.post.tag.index')
+            ->with(['status' => 'Tag Artikel ' . $tag->name . ' telah Dihapus']);
     }
 }

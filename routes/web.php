@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\Admin\{CategoryController, DashboardController, MemberController, CategoryPostController, PortofolioController};
+use App\Http\Controllers\Admin\{CategoryController, DashboardController, MemberController, CategoryPostController, PortofolioController, TagController};
 
 // Route Admin
 Route::prefix('admin')
@@ -16,6 +16,9 @@ Route::prefix('admin')
         	'as' => 'admin'
         ]);
         Route::resource('post/category', CategoryPostController::class, [
+            'as' => 'admin.post'
+        ]);
+        Route::resource('post/tag', TagController::class, [
             'as' => 'admin.post'
         ]);
     });
