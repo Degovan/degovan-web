@@ -104,4 +104,35 @@ class TagController extends Controller
         return redirect()->route('admin.post.tag.index')
             ->with(['status' => 'Tag Artikel ' . $tag->name . ' telah Dihapus']);
     }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function ajaxPost(Request $request)
+    {
+        Tag::create([
+            'name' => $request->name,
+            'slug' => Str::slug($request->name),
+        ]);
+
+        return response([
+            'success' => true,
+            'message' => 'tag success inserted',
+            'data' => [$request->name]
+        ], 200);
+    }
+
+    public function ajaxGetAll()
+    {
+        $tags = Tag::select('id', 'name')->orderBy('name', 'ASC')->get();
+
+        return response([
+            'success' => true,
+            'message' => 'get all tags',
+            'data' => $tags,
+        ], 200);
+    }
 }

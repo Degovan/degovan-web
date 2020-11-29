@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\Admin\{CategoryController, DashboardController, MemberController, CategoryPostController, PortofolioController, TagController};
+use App\Http\Controllers\Admin\{CategoryController, DashboardController, MemberController, CategoryPostController, PortofolioController, TagController, PostController, ContactController};
 
 // Route Admin
 Route::prefix('admin')
@@ -21,6 +21,9 @@ Route::prefix('admin')
         Route::resource('post/tag', TagController::class, [
             'as' => 'admin.post'
         ]);
+        Route::post('post/tag/ajax/post', 'App\Http\Controllers\Admin\TagController@ajaxPost');
+        Route::get('post/tag/ajax/getAll', 'App\Http\Controllers\Admin\TagController@ajaxGetAll');
+        Route::resource('post', PostController::class, ['as' => 'admin']);
     });
 
     Route::get('/portofolio/json', [CategoryController::class, 'json' ])->name('admin.categories.json');

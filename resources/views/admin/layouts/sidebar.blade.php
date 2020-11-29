@@ -63,7 +63,7 @@
                 </span>
                 <div class="multi-level collapse " role="list" id="artikel-app" aria-expanded="false">
                     <ul class="flex-column nav">
-                        <li class="nav-item "><a class="nav-link" href="#"><span>Data Artikel</span></a></li>
+                        <li class="nav-item "><a class="nav-link" href="{{ route('admin.post.index') }}"><span>Data Artikel</span></a></li>
                         <li class="nav-item "><a class="nav-link" href="{{ route('admin.post.category.index') }}"><span>Data Kategori Artikel</span></a></li>
                         <li class="nav-item "><a class="nav-link" href="{{ route('admin.post.tag.index') }}"><span>Data Tag Artikel</span></a></li>
                     </ul>
