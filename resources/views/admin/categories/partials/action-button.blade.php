@@ -1,5 +1,5 @@
-<a href="{{ route('categories.edit', $category->id) }}" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>
-<form action="{{ route('categories.destroy',  $category->id) }}" method="POST">
+<a href="{{ route('admin.categories.edit', $category->id) }}" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>
+<form action="{{ route('admin.categories.destroy',  $category->id) }}" method="POST">
     @csrf
     @method('delete')
     <button type="submit" class="btn btn-xs btn-danger">

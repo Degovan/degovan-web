@@ -25,7 +25,7 @@
             <div class="card-body">
                 <form action="{{ route('portofolios.store') }}" method="POST" autocomplete="off">
                     @csrf
-                    @include('admin.portofolios.partials.form-control')
+                    @include('admin.portofolios.partials.form-control', ['submit' => 'Simpan'])
                 </form>
             </div>
         </div>

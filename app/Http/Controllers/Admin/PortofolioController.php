@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\{Category, Service, Portofolio};
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use PhpParser\Node\Expr\New_;
 use Yajra\DataTables\DataTables;
 
 
@@ -26,6 +27,7 @@ class PortofolioController extends Controller
 
         if($request->ajax()) {
         $portofolios = Portofolio::query();
+        // dd($portofolios);
 
         return Datatables::of($portofolios)
                             ->addColumn('category', function($portofolio){
@@ -59,6 +61,7 @@ class PortofolioController extends Controller
     public function create()
     {
         return view('admin.portofolios.create',[
+            'portofolios' => new Portofolio,
             'categories' => Category::get(),
             'services'   => Service::get()
         ]);
@@ -89,7 +92,7 @@ class PortofolioController extends Controller
      */
     public function show(Portofolio $portofolio)
     {
-        //
+        return abort(404);
     }
 
     /**
@@ -100,7 +103,12 @@ class PortofolioController extends Controller
      */
     public function edit(Portofolio $portofolio)
     {
-        //
+        return view('admin.portofolios.edit',
+        [
+            'portofolios' => $portofolio,
+            'categories'  => Category::get(),
+            'services'    => Service::get()
+        ]);
     }
 
     /**
@@ -112,7 +120,11 @@ class PortofolioController extends Controller
      */
     public function update(Request $request, Portofolio $portofolio)
     {
-        //
+        $attr = request()->all();
+
+        $portofolio->update($attr);
+
+        return back();
     }
 
     /**
@@ -123,6 +135,7 @@ class PortofolioController extends Controller
      */
     public function destroy(Portofolio $portofolio)
     {
-        //
+        $portofolio->delete();
+        return back();
     }
 }

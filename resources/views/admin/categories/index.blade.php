@@ -21,7 +21,7 @@
                 <p class="mb-0">Semua data untuk kategori portofolio.</p>
             </div>
             <div>
-                <a href="{{ route('categories.create') }}" class="btn btn-outline-gray"><i class="fas fa-plus mr-1"></i> Tambah Kategori</a>
+                <a href="{{ route('admin.categories.create') }}" class="btn btn-outline-gray"><i class="fas fa-plus mr-1"></i> Tambah Kategori</a>
             </div>
         </div>
 

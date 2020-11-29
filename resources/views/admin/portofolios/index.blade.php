@@ -25,20 +25,21 @@
             </div>
         </div>
 
-
-        <table class="table table-bordered" id="portofolios-table">
-            <thead>
-                <tr>
-                    <th>No.</th>
-                    <th>Name</th>
-                    <th>Kategori</th>
-                    <th>Layanan</th>
-                    <th>Created At</th>
-                    <th>Updated At</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-        </table>
+        <div class="table-responsive py-4">
+            <table class="table table-bordered" id="portofolios-table">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Name</th>
+                        <th>Kategori</th>
+                        <th>Layanan</th>
+                        <th>Created At</th>
+                        <th>Updated At</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
     </div>
 </div>
 
