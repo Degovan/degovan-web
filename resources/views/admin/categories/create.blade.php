@@ -23,7 +23,7 @@
         </div>
         <div class="card border-light shadow-sm components-section">
             <div class="card-body">
-                <form action="{{ route('categories.store') }}" method="POST" autocomplete="off">
+                <form action="{{ route('admin.categories.store') }}" method="POST" autocomplete="off">
                     @csrf
                     @include('admin.categories.partials.form-control', ['button' => 'simpan'])
                 </form>

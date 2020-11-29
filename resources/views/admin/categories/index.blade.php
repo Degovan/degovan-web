@@ -15,6 +15,22 @@
 
 <div class="container">
     <div class="row justify-content-center">
+
+        @if (session('status'))
+        @push('addon-script')
+        <script>
+            swal({
+                title: "Good job!",
+                text: "{{ session('status') }}",
+                icon: "success",
+                button: false,
+                timer: 3000
+            });
+    
+        </script>
+        @endpush
+        @endif
+        
         <div class="d-flex justify-content-between w-100 flex-wrap">
             <div class="mb-3 mb-lg-0">
                 <h1 class="h4">Data Kategori</h1>

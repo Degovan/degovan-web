@@ -69,7 +69,9 @@ class CategoryController extends Controller
         $attr['slug'] = Str::slug(request('name'));
         Category::create($attr);
 
-        return back();
+        return redirect()
+                ->route('admin.categories.index')
+                ->with('status','Kategori portofolio '. $request->name . ' telah ditambahkan');
 
     }
 
@@ -81,7 +83,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        
+        return abort(404);
     }
 
     /**
@@ -107,7 +109,9 @@ class CategoryController extends Controller
         $attr = request()->all();
         $category->update($attr);
 
-        return back();
+        return redirect()
+                ->route('admin.categories.index')
+                ->with('status','Kategori portofolio '. $request->name . ' telah diupdate');
     }
 
     /**
@@ -116,11 +120,13 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         $categoryId = Category::find($id);
         $categoryId->delete();
       
-        return back();
+        return redirect()
+                ->route('admin.categories.index')
+                ->with('status','Kategori portofolio '. $categoryId->name . ' telah dihapus');
     }
 }

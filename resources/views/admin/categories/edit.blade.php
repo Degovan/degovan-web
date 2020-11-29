@@ -23,7 +23,7 @@
         </div>
         <div class="card border-light shadow-sm components-section">
             <div class="card-body">
-                <form action="{{ route('categories.update', $category->id) }}" method="POST" autocomplete="off">
+                <form action="{{ route('admin.categories.update', $category->id) }}" method="POST" autocomplete="off">
                     @csrf
                     @method('PATCH')
                     @include('admin.categories.partials.form-control')

@@ -81,7 +81,9 @@ class PortofolioController extends Controller
 
         Portofolio::create($attr);
 
-        return back();
+        return redirect()
+                ->route('portofolios.index')
+                ->with('status','Kategori portofolio'. $request->name . 'telah ditambahkan');
     }
 
     /**
@@ -124,7 +126,9 @@ class PortofolioController extends Controller
 
         $portofolio->update($attr);
 
-        return back();
+        return redirect()
+                ->route('portofolios.index')
+                ->with('status','Kategori portofolio'. $portofolio->name . 'telah ditambahkan');
     }
 
     /**
@@ -136,6 +140,8 @@ class PortofolioController extends Controller
     public function destroy(Portofolio $portofolio)
     {
         $portofolio->delete();
-        return back();
+        return redirect()
+                ->route('portofolios.index')
+                ->with('status','Kategori portofolio'. $portofolio->name . 'telah ditambahkan');
     }
 }
