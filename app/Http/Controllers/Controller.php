@@ -17,12 +17,11 @@ class Controller extends BaseController
     /**
      * Generate new filename
      */
-    public function getNewFileName($file)
+    public function getNewFileNameWithSlug($slug, $file)
     {
         $extension  = $file->extension();
-        $name       = Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME));
         $rand_num   = substr(rand(), 0, 5);
-        $filename   = $name . '-' . $rand_num . '.' . $extension;
+        $filename   = $slug . '-' . $rand_num . '.' . $extension;
 
         return $filename;
     }
