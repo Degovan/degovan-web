@@ -7,7 +7,7 @@
         <ol class="breadcrumb breadcrumb-dark breadcrumb-transparent">
             <li class="breadcrumb-item"><a href="#"><span class="fas fa-home"></span></a></li>
             <li class="breadcrumb-item"><a href="{{ route('admin.post.index') }}"> Artikel</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Edit Artikel</li>
+            <li class="breadcrumb-item active" aria-current="page">Tambah Artikel</li>
         </ol>
     </nav>
 </div>
@@ -17,7 +17,7 @@
     <div class="col-12 col-lg-7 mb-4">
         <div class="card border-light shadow-sm">
             <div class="card-header border-bottom border-light d-flex justify-content-between">
-                <h2 class="h5 mb-0">Tambah Tag</h2>
+                <h2 class="h5 mb-0">Tambah Artikel</h2>
             </div>
             <div class="card-body">
                 <form action="{{ route('admin.post.store') }}" method="post" enctype="multipart/form-data">
@@ -105,8 +105,7 @@
     <div class="col-12 col-lg-5 mb-4">
         <div class="card border-light shadow-sm">
             <div class="card-header border-bottom border-light d-flex justify-content-between">
-                <h2 class="h5 mb-0">Team members</h2>
-                <a href="#" class="btn btn-sm btn-secondary">See all</a>
+                <h2 class="h5 mb-0">Tambah Tag</h2>
             </div>
             <div class="card-body">
                 <form action="{{ route('admin.post.tag.store') }}" method="post">
@@ -197,6 +196,12 @@
                     });
                 }
               },
+              error: function(response) {
+                $('.message-status').text('');
+                    $('.message-status').append(`<div class="alert alert-danger">
+                                    <h6 class="text-white">${response.responseJSON.errors.name[0]} telah ditambahkan</h6>
+                                </div>`);
+              }
              });
         });
       </script>

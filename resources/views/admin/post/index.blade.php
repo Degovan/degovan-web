@@ -49,6 +49,7 @@
                                         <th>Gambar</th>
                                         <th>Judul</th>
                                         <th>Kategori</th>
+                                        <th>Diposting Oleh</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -59,8 +60,6 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
 
 @endsection
 
@@ -92,6 +91,10 @@
                 name: 'category_post_id'
             },
             {
+                data: 'diposting_oleh',
+                name: 'diposting_oleh'
+            },
+            {
                 data: 'action',
                 name: 'action',
                 orderable: false,
@@ -100,7 +103,6 @@
             },
         ]
     });
-
 </script>
 
 @endpush

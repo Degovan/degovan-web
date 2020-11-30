@@ -8,6 +8,7 @@ use App\Http\Requests\TagRequest;
 use App\Models\Tag;
 use Illuminate\Support\Str;
 use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Facades\Validator;
 
 class TagController extends Controller
 {
@@ -111,8 +112,33 @@ class TagController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function ajaxPost(Request $request)
+    public function ajaxPost(TagRequest $request)
     {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+        ], [
+            'name.required' => 'Nama tag tidak boleh kosong',
+            'name.string'   => 'Nama tag harus bersifat karakter (text)',
+            'name.max'      => 'Nama maksimal 255 karakter',
+        ]);
+
+        if($validator->fails()) {
+            if($request->ajax())
+            {
+                return response()->json(array(
+                    'success' => false,
+                    'message' => 'There are incorect values in the form!',
+                    'errors' => $validator->errors()->first(),
+                ), 422);
+            }
+
+            $this->throwValidationException(
+
+                $request, $validator
+
+            );
+        }
+
         Tag::create([
             'name' => $request->name,
             'slug' => Str::slug($request->name),

@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\Post;
-use App\Models\CategoryPost;
-use App\Models\Tag;
-use App\Models\PostTag;
+use Illuminate\Support\Facades\Validator;
 use Yajra\DataTables\Facades\DataTables;
-use App\Http\Requests\PostRequest;
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\PostRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use App\Models\CategoryPost;
+use App\Models\PostTag;
+use App\Models\Post;
+use App\Models\Tag;
 
 class PostController extends Controller
 {
@@ -27,6 +28,12 @@ class PostController extends Controller
             return DataTables::of(Post::query())
                 ->editColumn('image', function ($post) {
                     return view('admin.post.partials.img', ['post' => $post]);
+                })
+                ->editColumn('category_post_id', function ($post) {
+                    return $post->category_post->name;
+                })
+                ->addColumn('diposting_oleh', function ($post) {
+                    return $post->user->name;
                 })
                 ->addColumn('action', function($post) {
                     return view('admin.post.partials.action-button', ['post' => $post]);
@@ -61,6 +68,12 @@ class PostController extends Controller
      */
     public function store(PostRequest $request)
     {
+        $validator = $this->imageValidation($request);
+        if($validator->fails()) {
+            return back()
+                    ->withErrors($validator)
+                    ->withInput();
+        }
         $slug = Str::slug($request->title);
         $namaGambar = $this->getNewFileNameWithSlug($slug, $request->file('image'));
         Storage::putFileAs('public/assets/posts', $request->file('image'), $namaGambar);
@@ -123,8 +136,15 @@ class PostController extends Controller
     public function update(PostRequest $request, Post $post)
     {
         $namaGambar = $post->image;
-
         if(!is_null($request->file('image'))) {
+
+            $validator = $this->imageValidation($request);
+            if($validator->fails()) {
+                return back()
+                        ->withErrors($validator)
+                        ->withInput();
+            }
+
             Storage::delete('public/assets/posts'. $namaGambar);
 
             $slug = $post->slug;
@@ -165,5 +185,17 @@ class PostController extends Controller
         $post = Post::find($post->id);
         Post::destroy($post->id);
         return back()->with('status', 'Artikel ' . $post->title . ' telah dihapus');
+    }
+
+    public function imageValidation($request)
+    {
+        $validator = Validator::make($request->all(), [
+            'image'     => 'required|mimes:jpeg,jpg,png',
+        ], [
+            'image.required'    => 'Gambar tidak boleh kosong',
+            'image.mimes'       => 'Gambar tidak valid harus memiliki ekstensi jpg, jpeg, png',
+        ]);
+
+        return $validator;
     }
 }
