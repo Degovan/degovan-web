@@ -30,6 +30,30 @@
                     <span>Dashboard</span>
                 </a>
             </li>
+
+            <li class="nav-item ">
+                <span class="nav-link  collapsed  d-flex justify-content-between align-items-center"
+                    data-toggle="collapse" data-target="#user-app">
+                    <span>
+                        <span class="sidebar-icon"><span class="fas fa-user-circle"></span></span>
+                        User
+                    </span>
+                    <span class="link-arrow"><span class="fas fa-chevron-right"></span></span>
+                </span>
+                <div class="multi-level collapse  {{ (request()->is('admin/user*')) ? 'show' : ''  }}" role="list"
+                    id="user-app" aria-expanded="false">
+                    <ul class="flex-column nav">
+                        <li class="nav-item  {{ (Request::route()->getName() == 'user.create' ? 'active' : '')  }}"><a
+                                class="nav-link" href="{{ route('user.create') }}"><span>Tambah
+                                    User</span></a></li>
+                        <li class="nav-item  {{ (Request::route()->getName() == 'user.index' ? 'active' : '')}}
+                                                {{ (Request::route()->getName() == 'user.show' ? 'active' : '') }}
+                                                "><a class="nav-link" href="{{ route('user.index') }}"><span>Data
+                                    User</span></a></li>
+                    </ul>
+                </div>
+            </li>
+
             <li class="nav-item ">
                 <span class="nav-link  collapsed  d-flex justify-content-between align-items-center"
                     data-toggle="collapse" data-target="#member-app">
@@ -63,9 +87,13 @@
                 </span>
                 <div class="multi-level collapse " role="list" id="artikel-app" aria-expanded="false">
                     <ul class="flex-column nav">
-                        <li class="nav-item "><a class="nav-link" href="{{ route('admin.post.index') }}"><span>Data Artikel</span></a></li>
-                        <li class="nav-item "><a class="nav-link" href="{{ route('admin.post.category.index') }}"><span>Data Kategori Artikel</span></a></li>
-                        <li class="nav-item "><a class="nav-link" href="{{ route('admin.post.tag.index') }}"><span>Data Tag Artikel</span></a></li>
+                        <li class="nav-item "><a class="nav-link" href="{{ route('admin.post.index') }}"><span>Data
+                                    Artikel</span></a></li>
+                        <li class="nav-item "><a class="nav-link"
+                                href="{{ route('admin.post.category.index') }}"><span>Data Kategori Artikel</span></a>
+                        </li>
+                        <li class="nav-item "><a class="nav-link" href="{{ route('admin.post.tag.index') }}"><span>Data
+                                    Tag Artikel</span></a></li>
                     </ul>
                 </div>
             </li>
@@ -80,8 +108,10 @@
                 </span>
                 <div class="multi-level collapse " role="list" id="portfolio-app" aria-expanded="false">
                     <ul class="flex-column nav">
-                        <li class="nav-item "><a class="nav-link" href="{{ route('portofolios.index') }}"><span>Data Portfolio</span></a></li>
-                        <li class="nav-item "><a class="nav-link" href="{{ route('admin.categories.index') }}"><span>Data Kategori</span></a></li>
+                        <li class="nav-item "><a class="nav-link" href="{{ route('portofolios.index') }}"><span>Data
+                                    Portfolio</span></a></li>
+                        <li class="nav-item "><a class="nav-link"
+                                href="{{ route('admin.categories.index') }}"><span>Data Kategori</span></a></li>
                     </ul>
                 </div>
             </li>
