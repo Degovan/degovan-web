@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\Admin\{CategoryController, DashboardController, MemberController, CategoryPostController, PortofolioController, TagController, PostController, ContactController};
+use App\Http\Controllers\Admin\{CategoryController, DashboardController, MemberController, CategoryPostController, PortofolioController, TagController, PostController, ContactController, UserController};
 
 // Route Admin
 Route::prefix('admin')
@@ -10,13 +10,14 @@ Route::prefix('admin')
     ->group(function () {
         Route::get('dashboard', DashboardController::class)->name('dashboard');
         Route::resource('member', MemberController::class);
+        Route::resource('user', UserController::class);
         Route::resource('portofolios', PortofolioController::class);
         Route::resource('portofolio/categories', CategoryController::class, [
             'as' => 'admin'
         ]);
         Route::resource('contact', ContactController::class, [
-        	'as' => 'admin'
-    ]);
+            'as' => 'admin'
+        ]);
         Route::resource('post/category', CategoryPostController::class, [
             'as' => 'admin.post'
         ]);
@@ -28,8 +29,9 @@ Route::prefix('admin')
         Route::resource('post', PostController::class, ['as' => 'admin']);
     });
 
-    Route::get('/category/json', [CategoryController::class, 'json' ])->name('admin.categories.json');
-    Route::get('/portofolio/json', [PortofolioController::class, 'json' ])->name('admin.portofolio.json');
+Route::get('/category/json', [CategoryController::class, 'json'])->name('admin.categories.json');
+Route::get('/portofolio/json', [PortofolioController::class, 'json'])->name('admin.portofolio.json');
+
 
 // Route Web
 Route::get('/', function () {
