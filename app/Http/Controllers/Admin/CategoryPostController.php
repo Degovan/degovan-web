@@ -23,9 +23,10 @@ class CategoryPostController extends Controller
             ->addColumn('action', function ($category) {
                 return view('admin.category-post.partials.action-button', ['category' => $category]);
             })->make(true);
+        } else {
+            return view('admin.category-post.index');
         }
 
-        return view('admin.category-post.index');
     }
 
     /**
