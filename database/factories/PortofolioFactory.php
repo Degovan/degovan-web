@@ -27,7 +27,7 @@ class PortofolioFactory extends Factory
         return [
             'category_id' => rand(1,10),
             'service_id' => rand(1,10),
-            'name' => $name,
+            'title' => $name,
             'slug' => Str::slug($name),
             'description' => $this->faker->text(),
         ];

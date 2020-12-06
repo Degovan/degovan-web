@@ -63,6 +63,7 @@
 
 <script>
     $(function(){
+        // DataTables
         $('#categories-table').DataTable({
             processing : true,
             serverSide : true,

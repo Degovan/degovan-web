@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PortofolioRequest;
 use App\Models\{Category, Service, Portofolio};
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -73,7 +74,7 @@ class PortofolioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PortofolioRequest $request)
     {
         $attr = request()->all();
         
@@ -83,7 +84,7 @@ class PortofolioController extends Controller
 
         return redirect()
                 ->route('portofolios.index')
-                ->with('status','Kategori portofolio'. $request->name . 'telah ditambahkan');
+                ->with('status','Portofolio '. $request->title . ' telah ditambahkan');
     }
 
     /**
@@ -120,7 +121,7 @@ class PortofolioController extends Controller
      * @param  \App\Models\Portofolio  $portofolio
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Portofolio $portofolio)
+    public function update(PortofolioRequest $request, Portofolio $portofolio)
     {
         $attr = request()->all();
 
@@ -128,7 +129,7 @@ class PortofolioController extends Controller
 
         return redirect()
                 ->route('portofolios.index')
-                ->with('status','Kategori portofolio'. $portofolio->name . 'telah ditambahkan');
+                ->with('status','Portofolio '. $request->title . ' telah diupdate');
     }
 
     /**
@@ -137,11 +138,12 @@ class PortofolioController extends Controller
      * @param  \App\Models\Portofolio  $portofolio
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Portofolio $portofolio)
+    public function destroy(Request $request, $id)
     {
-        $portofolio->delete();
+        $portofolioId = Portofolio::find($id);
+        $portofolioId->delete();
         return redirect()
                 ->route('portofolios.index')
-                ->with('status','Kategori portofolio'. $portofolio->name . 'telah ditambahkan');
+                ->with('status','Portofolio '. $request->title . 'telah dihapus');
     }
 }
