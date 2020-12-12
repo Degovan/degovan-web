@@ -2,7 +2,7 @@
      <div class="flex flex-wrap mb-4 w-full">
          <div class="w-full text-center mt-8">
              <div class="text-md">
-                 <a href="{{ route('web.home') }}" class="mx-2">Home</a>
+                 <a href="#" class="mx-2">Home</a>
                  <a href="#" class="mx-2">About</a>
                  <a href="#" class="mx-2">Blog</a>
                  <a href="#" class="mx-2">Portfolio</a>
