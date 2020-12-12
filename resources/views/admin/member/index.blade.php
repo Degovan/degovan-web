@@ -44,7 +44,6 @@
                                     <th>Name</th>
                                     <th>Part</th>
                                     <th>Image</th>
-                                    <th>Description</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -85,10 +84,10 @@
                 data: 'image',
                 name: 'image'
             },
-            {
-                data: 'description',
-                name: 'description'
-            },
+            // {
+            //     data: 'description',
+            //     name: 'description'
+            // },
             {
                 data: 'action',
                 name: 'action',

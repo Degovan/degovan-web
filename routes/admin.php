@@ -25,6 +25,3 @@ Route::middleware(['auth'])->group(function() {
     Route::get('post/tag/ajax/getAll', 'App\Http\Controllers\Admin\TagController@ajaxGetAll');
     Route::resource('post', PostController::class, ['as' => 'admin']);
 });
-
-require __DIR__ . '/auth.php';
-?>
