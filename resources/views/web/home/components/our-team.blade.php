@@ -1,16 +1,3 @@
-@section('stylesheet')
-<style>
-    #our-team {
-        background-image: url("/web-assets/img/team.jpg");
-        background-color: #cccccc;
-        height: initial;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        position: relative;
-    }
-</style>
-@endsection
 <section id="our-team">
     <h1 class="text-center text-white p-4">My Team?</h1>
 
