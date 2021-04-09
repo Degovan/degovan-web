@@ -7,8 +7,6 @@
 </head>
 <body>
     @include('web.layouts.partials.navbar')
-    @include('web.layouts.partials.sidebar')
-
     <div id="root">
         @yield('content')
     </div>

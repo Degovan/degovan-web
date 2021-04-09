@@ -17,11 +17,11 @@ Route::get('/register', [RegisteredUserController::class, 'create'])
 Route::post('/register', [RegisteredUserController::class, 'store'])
     ->middleware('guest');
 
-Route::get('/login', [AuthenticatedSessionController::class, 'create'])
+Route::get('/DegovanMyAdmin', [AuthenticatedSessionController::class, 'create'])
     ->middleware('guest')
     ->name('login');
 
-Route::post('/login', [AuthenticatedSessionController::class, 'store'])
+Route::post('/DegovanMyAdmin', [AuthenticatedSessionController::class, 'store'])
     ->middleware('guest');
 
 Route::get('/forgot-password', [PasswordResetLinkController::class, 'create'])
