@@ -1,5 +1,5 @@
 <section id="our-team">
-    <h1 class="text-center text-white p-4">My Team?</h1>
+    <h1 class="text-center text-white p-4 lato">Team</h1>
 
     <div class="container">
         <div class="row your-class">

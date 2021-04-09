@@ -1,9 +1,9 @@
-<section id="our-services">
+<section id="our-services" class="py-5" style="margin-top: 200px">
     <h1 class="text-center">Our Services</h1>
 
     <div class="cards">
         <div class="container">
-            <div class="row">
+            <div class="row" style="margin-top: 80px;">
                 <div class="col-lg-4">
                     <div class="card border-0">
                         <div class="card-header bg-white border-0">

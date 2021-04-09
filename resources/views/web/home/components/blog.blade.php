@@ -1,6 +1,7 @@
-<h1 class="text-center">Blog</h1>
+<section id="blog" style="background-color: #fafbff">
+<h1 class="text-center p-2 lato">Blog</h1>
 
-<p class="text-center">Ingin tau seputar IT? atau kalian ingin belajar programming? kami telah menyediakan artikel untuk mengarahkan anda ke dunia IT</p>
+<p class="text-center mb-5 roboto">Ingin tau seputar IT? atau kalian ingin belajar programming? kami telah menyediakan artikel untuk mengarahkan anda ke dunia IT</p>
 
 <div class="container">
     <div class="row justify-content-center">
@@ -62,3 +63,4 @@
         <button class="btn btn-primary ">Artikel lainnya</button>
     </div>
 </div>
+</section>
