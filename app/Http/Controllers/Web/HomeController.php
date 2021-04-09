@@ -12,7 +12,7 @@ class HomeController extends Controller
     {
         $member = Member::all();
         $data = [
-            'title'  => 'Home',
+            'title'  => 'Degovan',
             'nav'    => 'home',
             'member' => $member
         ];
