@@ -12,4 +12,9 @@ class Member extends Model
     protected $fillable = [
         'name', 'part',  'image', 'description'
     ];
+
+    public function getTakeImageAttribute()
+    {
+        return '/storage/'. $this->image;
+    }
 }

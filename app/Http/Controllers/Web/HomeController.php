@@ -14,7 +14,7 @@ class HomeController extends Controller
         $data = [
             'title'  => 'Degovan',
             'nav'    => 'home',
-            'member' => $member
+            'members' => $member
         ];
 
         return view('web.home.index', $data);

@@ -8,13 +8,13 @@
                     <div class="card border-0">
                         <div class="card-header bg-white border-0">
                             <span style="font-size: 3em">
-                                <i class="fas fa-wifi"></i>
+                                <i class="zmdi zmdi-search"></i>
                             </span>
                         </div>
                         <div class="card-body">
                             <div class="card-title font-weight-bold">SEO Friendly</div>
                             <div class="card-text">
-                                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptate repellendus ex dolorum, sapiente modi itaque quos nulla nostrum inventore eum corporis reiciendis explicabo aliquid. Saepe?
+                                SEO untuk Website anda berada diperingkat 1 Google.
                             </div>
                         </div>
                     </div>
@@ -23,13 +23,13 @@
                     <div class="card border-0">
                         <div class="card-header bg-white border-0">
                             <span style="font-size: 3em">
-                                <i class="fas fa-wifi"></i>
+                                <i class="zmdi zmdi-shield-security"></i>   
                             </span>
                         </div>
                         <div class="card-body">
-                            <div class="card-title font-weight-bold">Website Kencang</div>
+                            <div class="card-title font-weight-bold">Security</div>
                             <div class="card-text">
-                                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptate repellendus ex dolorum, sapiente modi itaque quos nulla nostrum inventore eum corporis reiciendis explicabo aliquid. Saepe?
+                                Degovan mempunyai keunggulan lebih baik dalam melindungi website dan surver. 
                             </div>
                         </div>
                     </div>
@@ -38,13 +38,13 @@
                     <div class="card border-0">
                         <div class="card-header bg-white border-0">
                             <span style="font-size: 3em">
-                                <i class="fas fa-wifi"></i>
+                                <i class="zmdi zmdi-money-box"></i>
                             </span>
                         </div>
                         <div class="card-body">
-                            <div class="card-title font-weight-bold">Security Mantap</div>
+                            <div class="card-title font-weight-bold">Harga Pas</div>
                             <div class="card-text">
-                                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptate repellendus ex dolorum, sapiente modi itaque quos nulla nostrum inventore eum corporis reiciendis explicabo aliquid. Saepe?
+                                Degovan dibuat untuk pengalokasian bisnis anda dengan biaya yang hemat sesuai budget
                             </div>
                         </div>
                     </div>
