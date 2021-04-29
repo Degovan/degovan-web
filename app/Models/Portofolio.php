@@ -10,7 +10,7 @@ class Portofolio extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title','category_id', 'service_id', 'slug', 'description',
+        'title','images_url' ,'category_id', 'service_id', 'slug', 'description',
     ];
 
     public function category()

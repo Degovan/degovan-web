@@ -6,7 +6,9 @@
     <title>{{ $title }} - Jasa Pembuatan Aplikasi, Website, dll</title>
 </head>
 <body>
-    @include('web.layouts.partials.navbar')
+    @if (Route::currentRouteName() == 'web.home')
+        @include('web.layouts.partials.navbar')
+    @endif
     <div id="root">
         @yield('content')
     </div>

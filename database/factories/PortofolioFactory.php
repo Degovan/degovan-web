@@ -28,6 +28,7 @@ class PortofolioFactory extends Factory
             'category_id' => rand(1,10),
             'service_id' => rand(1,10),
             'title' => $name,
+            'images_url' => $this->faker->imageUrl($width = 640, $height = 480),
             'slug' => Str::slug($name),
             'description' => $this->faker->text(),
         ];
