@@ -44,6 +44,40 @@
         </div>
     @enderror
 </div>
+<div class="mb-3 row">
+    <div class="col-md-6">
+        <label for="imageInput" class="form-label">Gambar</label>
+        <input class="form-control" type="file" id="input-porto" name="image">
+    </div>
+    <div class="col-md-6">
+        <div class="mt-4 image-preview" id="preview-porto"></div>
+    </div>
+</div>
 <button class="btn btn-primary" type="submit">
     {{ $submit ?? 'Perbaharui' }}
 </button>
+
+@push('addon-script')
+<script>
+    function previewUpload(el, prevEl) {
+        let input = document.getElementById(el);
+        let prev = document.getElementById(prevEl);
+
+        input.addEventListener('change', _=> {
+            if(input.files && input.files[0]) {
+                const reader = new FileReader();
+
+                reader.onload = e => {
+                    prev.style.backgroundImage = `url("${e.target.result}")`;
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+
+            prev.style.backgroundImage = '';
+        });
+    }
+
+    previewUpload('input-porto', 'preview-porto');
+</script>
+@endpush

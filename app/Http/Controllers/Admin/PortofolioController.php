@@ -26,32 +26,33 @@ class PortofolioController extends Controller
     public function json(Request $request)
     {
 
-        if($request->ajax()) {
-        $portofolios = Portofolio::query();
-        // dd($portofolios);
+        // if($request->ajax()) {
+        // $portofolios = Portofolio::query();
+        // // dd($portofolios);
 
-        return Datatables::of($portofolios)
-                            ->addColumn('category', function($portofolio){
-                                return '
-                                    <a href="'.route('admin.categories.show', $portofolio->category->id).'">'.$portofolio->category->name.'</a>
-                                ';
-                            })
-                            ->addColumn('service', function($portofolio){
-                                return '
-                                    <a href="/admin/service/'.$portofolio->service->id.'">'.$portofolio->service->name.'</a>
-                                ';
-                            })
-                            ->editColumn('created_at', function($portofolio){
-                                return $portofolio->created_at->diffForHumans();
-                            })
-                            ->addColumn('action', function($portofolio){
-                                return view('admin.portofolios.partials.action-button',[
-                                    'portofolio' => $portofolio
-                                ]);
-                            })
-                            ->rawColumns(['category', 'service'])
-                            ->make(true);
-        }
+        // return Datatables::of($portofolios)
+        //                     ->addColumn('category', function($portofolio){
+        //                         return '
+        //                             <a href="'.route('admin.categories.show', $portofolio->category->id).'">'.$portofolio->category->name.'</a>
+        //                         ';
+        //                     })
+        //                     ->addColumn('service', function($portofolio){
+        //                         return '
+        //                             <a href="/admin/service/'.$portofolio->service->id.'">'.$portofolio->service->name.'</a>
+        //                         ';
+        //                     })
+        //                     ->editColumn('created_at', function($portofolio){
+        //                         return $portofolio->created_at->diffForHumans();
+        //                     })
+        //                     ->addColumn('action', function($portofolio){
+        //                         return view('admin.portofolios.partials.action-button',[
+        //                             'portofolio' => $portofolio
+        //                         ]);
+        //                     })
+        //                     ->rawColumns(['category', 'service'])
+        //                     ->make(true);
+        // }
+        var_dump('oke');
     }
 
     /**
@@ -79,6 +80,7 @@ class PortofolioController extends Controller
         $attr = request()->all();
         
         $attr['slug'] = Str::slug(request('title'));
+        $attr['images_url'] = $request->image->store('assets/portfolio/', 'public');
 
         Portofolio::create($attr);
 

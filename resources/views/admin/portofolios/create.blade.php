@@ -23,7 +23,7 @@
         </div>
         <div class="card border-light shadow-sm components-section">
             <div class="card-body">
-                <form action="{{ route('portofolios.store') }}" method="POST" autocomplete="off">
+                <form action="{{ route('portofolios.store') }}" method="POST" autocomplete="off" enctype="multipart/form-data">
                     @csrf
                     @include('admin.portofolios.partials.form-control', ['submit' => 'Simpan'])
                 </form>
@@ -31,4 +31,21 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('stylesheet')
+<style>
+    .image-preview {
+        width: 16rem;
+        height: 11rem;
+        border: 2px dashed #ddd;
+        border-radius: 5px;
+        position: relative;
+        overflow: hidden;
+        border-color: #969696;
+        margin: auto;
+        background-size: cover;
+        background-position: 50%;
+    }
+</style>
 @endsection
