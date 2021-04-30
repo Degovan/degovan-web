@@ -22,4 +22,9 @@ class Portofolio extends Model
     {
         return $this->belongsTo(Service::class);
     }
+
+    public function getTakeImageAttribute()
+    {
+        return '/storage/' . $this->images_url;
+    }
 }

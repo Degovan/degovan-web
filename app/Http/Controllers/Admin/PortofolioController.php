@@ -80,7 +80,7 @@ class PortofolioController extends Controller
         $attr = request()->all();
         
         $attr['slug'] = Str::slug(request('title'));
-        $attr['images_url'] = $request->image->store('assets/portfolio/', 'public');
+        $attr['images_url'] = $request->image->store('assets/portofolio', 'public');
 
         Portofolio::create($attr);
 
@@ -152,6 +152,7 @@ class PortofolioController extends Controller
     public function destroy(Request $request, $id)
     {
         $portofolioId = Portofolio::find($id);
+        unlink(storage_path('app/public/'.$portofolioId->images_url));
         $portofolioId->delete();
         return redirect()
                 ->route('portofolios.index')
