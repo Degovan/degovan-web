@@ -8,6 +8,7 @@ Route::middleware(['auth'])->group(function() {
     Route::get('dashboard', DashboardController::class)->name('dashboard');
     Route::resource('member', MemberController::class);
     Route::resource('user', UserController::class);
+    Route::get('portofolios/json', [PortofolioController:: class, 'json'])->name('admin.portofolio.json');
     Route::resource('portofolios', PortofolioController::class);
     Route::resource('portofolio/categories', CategoryController::class, [
         'as' => 'admin'

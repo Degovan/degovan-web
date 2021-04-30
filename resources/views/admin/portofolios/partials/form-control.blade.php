@@ -47,10 +47,15 @@
 <div class="mb-3 row">
     <div class="col-md-6">
         <label for="imageInput" class="form-label">Gambar</label>
-        <input class="form-control" type="file" id="input-porto" name="image">
+        <input class="form-control @error('image') is-invalid @enderror" type="file" id="input-porto" name="image">
+        @error('image')
+            <div class="invalid-feedback">
+                {{ $message }}
+            </div>
+        @enderror
     </div>
     <div class="col-md-6">
-        <div class="mt-4 image-preview" id="preview-porto"></div>
+        <div class="mt-4 image-preview" id="preview-porto" style="background-image: url('{{Storage::url($portofolios->images_url)}}')"></div>
     </div>
 </div>
 <button class="btn btn-primary" type="submit">
@@ -73,8 +78,8 @@
 
                 reader.readAsDataURL(input.files[0]);
             }
-
-            prev.style.backgroundImage = '';
+            const oldImage = `url('{{ Storage::url($portofolios->images_url)}}')`;
+            prev.style.backgroundImage = oldImage;
         });
     }
 
