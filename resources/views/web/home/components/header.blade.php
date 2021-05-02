@@ -9,7 +9,7 @@
                 Kamilah hadir untuk anda yang ingin mengenal tekhnologi.
                 Jika kalian tertarik dengan kami. Silahkan cek pada Button dibawah ini <br>
                 <div class="d-flex flex-column">
-                    <a href="{{ route('web.portofolio') }}" class="btn btn-large btn-head-primary mt-2 shadow font-weight-bold" style="color: #5d74ff">Portofolio</a>
+                    {{-- <a href="{{ route('web.portofolio') }}" class="btn btn-large btn-head-primary mt-2 shadow font-weight-bold" style="color: #5d74ff">Portofolio</a> --}}
                 </div>
             </p>
         </div>
