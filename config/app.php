@@ -17,6 +17,17 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Application CDN
+    |--------------------------------------------------------------------------
+    |
+    | This value is the content delivery network location of your application
+    | the cdn usually contains image, js, and css which located separately
+    | you can modify this with "storage/" path or your domain location.
+    */
+    'cdn' => env('APP_CDN', '/storage/'),
+
+    /*
+    |--------------------------------------------------------------------------
     | Application Environment
     |--------------------------------------------------------------------------
     |

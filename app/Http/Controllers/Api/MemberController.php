@@ -20,8 +20,6 @@ class MemberController extends Controller
         'image' => 'sometimes|image|mimes:png,jpg,jpeg,gif',
         'description' => 'required'
     ];
-    // Contents Path
-    private $cPath = '/storage/';
     /**
      * Display a listing of the resource.
      *
@@ -32,7 +30,7 @@ class MemberController extends Controller
         $data = Member::get()->makeHidden($this->hiddenCols);
         $members = [];
         foreach($data as $member) {
-            $member['image'] = $this->cPath . $member->image;
+            $member['image'] = config('app.cdn') . $member->image;
             $members[] = $member;
         }
 
@@ -97,7 +95,7 @@ class MemberController extends Controller
             ], Response::HTTP_NOT_FOUND);
         }
 
-        $member['image'] = $this->cPath . $member->image;
+        $member['image'] = config('app.cdn') . $member->image;
 
         return response()->json([
             'status' => 'ok',
