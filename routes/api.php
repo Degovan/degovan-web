@@ -20,8 +20,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::namespace('App\\Http\\Controllers\\Api')->group(function() {
     Route::resource('member', 'MemberController', [
-        'only' => [
-            'index', 'show'
+        'except' => [
+            'create', 'edit'
         ]
     ]);
     Route::resource('portofolio', 'PortofolioController', [
