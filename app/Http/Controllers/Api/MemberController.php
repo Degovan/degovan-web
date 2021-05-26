@@ -17,7 +17,7 @@ class MemberController extends Controller
     private $validationRules = [
         'name' => 'required',
         'part' => 'required',
-        'image' => 'sometimes|image|mimes:png,jpg,jpeg,gif',
+        'image' => 'sometimes|image|mimes:png,jpg,jpeg,gif,webp',
         'description' => 'required'
     ];
     /**

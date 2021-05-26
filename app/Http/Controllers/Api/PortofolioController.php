@@ -14,7 +14,7 @@ class PortofolioController extends Controller
     private $hiddenCols = ['created_at', 'updated_at'];
     private $validationRules = [
         'title' => 'required',
-        'images_url' => 'sometimes|image|mimes:jpg,png,jpeg,gif',
+        'images_url' => 'sometimes|image|mimes:jpg,png,jpeg,gif,webp',
         'category_id' => 'required|numeric',
         'service_id' => 'required|numeric',
         'slug' => 'required',
