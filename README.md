@@ -47,7 +47,63 @@ Show member data according to the _id_
   }
 }
 ```
- 
+
+## Create Member
+Store the member data
+#### Request
+* Method : ``POST``
+* Endpoint : ``/api/member``
+
+#### Params
+* name : ``string``
+* part : ``string``
+* image : ``file(image:jpg,jpeg,png,gif,webp)``
+* description : ``string``
+
+#### Response
+```json
+{
+  "status": "string",
+  "message": "string"
+}
+```
+
+## Edit Member
+Update the member data
+#### Request
+* Method : ``PUT`` | ``PATCH``
+* Endpoint : ``/api/member/{id}``
+
+#### Params
+* name : ``string``
+* part : ``string``
+* image : ``file(image:jpg,jpeg,png,gif,webp)`` -optional
+* description : ``string``
+
+#### Response
+```json
+{
+  "status": "string",
+  "message": "string"
+}
+```
+
+## Delete Member
+Destroy the member data
+#### Request
+* Method : ``DELETE``
+* Endpoint : ``/api/member/{id}``
+
+#### Response
+```json
+{
+  "status": "string",
+  "message": "string"
+}
+```
+<br/>
+---
+
 ## Get Portfolio
 Show all the portfolios data
 #### Request
@@ -91,5 +147,63 @@ Show portfolio data according to the _id_
     "slug": "string",
     "description": "string"
   }
+}
+```
+
+## Create Portfolio
+Store the portfolio data
+#### Request
+* Method : ``POST``
+* Endpoint : ``/api/portofolio``
+
+#### Params
+* title : ``string``
+* images_url : ``file(image:jpg,jpeg,png,gif,webp)``
+* category_id : ``number``
+* service_id : ``number``
+* slug : ``string``
+* description : ``string``
+
+#### Response
+```json
+{
+  "status": "string",
+  "message": "string"
+}
+```
+
+## Edit Portfolio
+Update the portfolio data
+#### Request
+* Method : ``PUT`` | ``PATCH``
+* Endpoint : ``/api/portofolio/{id}``
+
+#### Params
+* title : ``string``
+* images_url : ``file(image:jpg,jpeg,png,gif,webp)`` -optional
+* category_id : ``number``
+* service_id : ``number``
+* slug : ``string``
+* description : ``string``
+
+#### Response
+```json
+{
+  "status": "string",
+  "message": "string"
+}
+```
+
+## Delete Portfolio
+Destroy the portfolio data
+#### Request
+* Method : ``DELETE``
+* Endpoint : ``/api/portofolio/{id}``
+
+#### Response
+```json
+{
+  "status": "string",
+  "message": "string"
 }
 ```
