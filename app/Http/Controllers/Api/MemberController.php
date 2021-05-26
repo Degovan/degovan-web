@@ -171,7 +171,7 @@ class MemberController extends Controller
     private function uploadImage($image)
     {
         $name = 'member' . time() . '.' . $image->getClientOriginalExtension();
-        $path = $image->storeAs('assets/portofolio', $name, 'public');
+        $path = $image->storeAs('assets/member', $name, 'public');
         return [
             'name' => $name,
             'path' => $path

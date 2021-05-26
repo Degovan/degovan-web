@@ -25,8 +25,8 @@ Route::namespace('App\\Http\\Controllers\\Api')->group(function() {
         ]
     ]);
     Route::resource('portofolio', 'PortofolioController', [
-        'only' => [
-            'index', 'show'
+        'except' => [
+            'create', 'edit'
         ]
     ]);
 });
