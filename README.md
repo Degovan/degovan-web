@@ -5,7 +5,31 @@
 
 # Api Spec
 ### Documentation of API Usage
- 
+
+## Login
+Get the access token for store, update, and delete data
+#### Request
+* Method : ``POST``
+* Endpoint : ``api/login``
+
+#### Params
+* Email : ``string``
+* Password : ``string``
+
+#### Response
+```json
+{
+  "status": "string",
+  "message" : "string",
+  "data": [
+    {
+      "token": "string",
+      "token_type": "string"
+    }
+  ]
+}
+```
+
 ## Get Member
 Show all the members data
 #### Request
