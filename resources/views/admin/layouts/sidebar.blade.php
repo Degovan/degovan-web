@@ -71,7 +71,7 @@
                                     Member</span></a></li>
                         <li class="nav-item  {{ (Request::route()->getName() == 'member.index' ? 'active' : '')}}
                                                 {{ (Request::route()->getName() == 'member.show' ? 'active' : '') }}
-                                                "><a class="nav-link" href="{{ route('member.index') }}"><span>Data
+                                                "><a class="nav-link" href="/admin/member"><span>Data
                                     Member</span></a></li>
                     </ul>
                 </div>

@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('login', [AuthController::class, 'login'])->name('login');
+Route::post('login', [AuthController::class, 'login']);
 
 // This routes can be accessed without login required
 Route::namespace('App\\Http\\Controllers\\Api')->group(function() {
