@@ -24,7 +24,7 @@ Route::namespace('App\\Http\\Controllers\\Api')->group(function() {
             'index', 'show'
         ]
     ]);
-    Route::resource('portofolio', 'MemberController', [
+    Route::resource('portofolio', 'PortofolioController', [
         'only' => [
             'index', 'show'
         ]
