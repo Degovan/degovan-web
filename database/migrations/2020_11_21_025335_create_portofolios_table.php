@@ -25,10 +25,6 @@ class CreatePortofoliosTable extends Migration
             $table->foreign('category_id')
             ->references('id')
             ->on('categories');
-
-            $table->foreign('service_id')
-            ->references('id')
-            ->on('services');
         });
     }
 

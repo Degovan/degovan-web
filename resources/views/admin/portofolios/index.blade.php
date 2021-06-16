@@ -48,7 +48,6 @@
                         <th>No.</th>
                         <th>Name</th>
                         <th>Kategori</th>
-                        <th>Layanan</th>
                         <th>Created At</th>
                         <th>Updated At</th>
                         <th>Action</th>
@@ -78,7 +77,6 @@ $(function(){
             {data : 'id' , name : 'id'},
             {data : 'title', name : 'title'},
             {data : 'category', name : 'category'},
-            {data : 'service', name : 'service_id'},
             {data: 'created_at', name: 'created_at'},
             {data: 'updated_at', name: 'updated_at'},
             {data: 'action', name: 'action', orderable: false, searchable: false}

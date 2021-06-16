@@ -26,9 +26,8 @@ class PortofolioRequest extends FormRequest
         return [
             'title'         => 'required|string|max:255',
             'category_id'   => 'required',
-            'service_id'    => 'required',
             'description'   => 'required',
-            'image'         => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            'image'         => 'mimes:jpeg,png,jpg,gif,svg|max:2048'
         ];
     }
 

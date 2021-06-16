@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PortofolioRequest;
-use App\Models\{Category, Service, Portofolio};
+use App\Models\{Category, Portofolio};
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
@@ -37,11 +37,6 @@ class PortofolioController extends Controller
                                     <a href="'.route('admin.categories.show', $portofolio->category->id).'">'.$portofolio->category->name.'</a>
                                 ';
                             })
-                            ->addColumn('service', function($portofolio){
-                                return '
-                                    <a href="/admin/service/'.$portofolio->service->id.'">'.$portofolio->service->name.'</a>
-                                ';
-                            })
                             ->editColumn('created_at', function($portofolio){
                                 return $portofolio->created_at->diffForHumans();
                             })
@@ -65,7 +60,6 @@ class PortofolioController extends Controller
         return view('admin.portofolios.create',[
             'portofolios' => new Portofolio,
             'categories' => Category::get(),
-            'services'   => Service::get()
         ]);
     }
 
@@ -112,7 +106,6 @@ class PortofolioController extends Controller
         [
             'portofolios' => $portofolio,
             'categories'  => Category::get(),
-            'services'    => Service::get()
         ]);
     }
 

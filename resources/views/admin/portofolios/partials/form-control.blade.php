@@ -9,7 +9,7 @@
 </div>
 <div class="mb-3">
     <label for="kategori" class="form-label">Kategori</label>
-    <select name="category_id" id="kategori_id" class="form-select @error('service_id') is-invalid @enderror">
+    <select name="category_id" id="kategori_id" class="form-select @error('category_id') is-invalid @enderror">
         <option selected disabled>Open this select menu</option>
         @foreach ($categories as $category)
             <option {{ $category->id == $portofolios->category_id ? 'selected' : '' }} value="{{ $category->id }}">{{ $category->name }}</option>
@@ -20,20 +20,6 @@
             {{ $message }}
         </div>
     @enderror
-</div>
-<div class="mb-3">
-    <label for="layanan" class="form-label">Layanan</label>
-    <select name="service_id" id="layanan_id" class="form-select @error('service_id') is-invalid @enderror">
-        <option selected disabled>Open this select menu</option>
-        @foreach ($services as $service)
-            <option {{ $service->id == $portofolios->service_id ? 'selected' : '' }} value="{{ $service->id }}">{{ $service->name }}</option>
-        @endforeach
-    </select>
-    @error('service_id')
-    <div class="invalid-feedback">
-        {{ $message }}
-    </div>
-@enderror
 </div>
 <div class="mb-3">
     <label for="exampleInput" class="form-label">Deskripsi</label>
