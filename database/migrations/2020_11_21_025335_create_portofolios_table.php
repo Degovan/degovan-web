@@ -17,7 +17,6 @@ class CreatePortofoliosTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->integer('category_id')->unsigned();
-            $table->integer('service_id')->unsigned();
             $table->string('slug');
             $table->text('description');
             $table->timestamps();

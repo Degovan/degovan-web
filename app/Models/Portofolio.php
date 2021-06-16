@@ -10,17 +10,12 @@ class Portofolio extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title','images_url' ,'category_id', 'service_id', 'slug', 'description',
+        'title','images_url' ,'category_id', 'slug', 'description',
     ];
 
     public function category()
     {
         return $this->belongsTo(Category::class);
-    }
-
-    public function service()
-    {
-        return $this->belongsTo(Service::class);
     }
 
     public function getTakeImageAttribute()
