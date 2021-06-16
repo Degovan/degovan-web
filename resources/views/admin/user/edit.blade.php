@@ -25,16 +25,25 @@
                             <div class="mb-3">
                                 <label for="name">Nama Lengkap</label>
                                 <input type="text" class="form-control {{ $errors->first('name') ? 'is-invalid' : '' }}"
-                                    id="name" name="name" value="{{ $user->name  }}">
+                                    id="name" name="name" value="{{ old('name') ? old('name') : $user->name }}">
                                 <div class="invalid-feedback">
                                     {{$errors->first('name')}}
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="role">Role</label>
+                                <input type="text"
+                                    class="form-control {{ $errors->first('role') ? 'is-invalid' : '' }}" id="role"
+                                    name="role" value="{{ old('role') ? old('role') : $user->role  }}">
+                                <div class="invalid-feedback">
+                                    {{$errors->first('role')}}
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label for="email">Email</label>
                                 <input type="text"
                                     class="form-control {{ $errors->first('email') ? 'is-invalid' : '' }}" id="email"
-                                    name="email" value="{{ $user->email  }}">
+                                    name="email" value="{{ old('email') ? old('email') : $user->email }}">
                                 <div class="invalid-feedback">
                                     {{$errors->first('email')}}
                                 </div>

@@ -82,6 +82,7 @@ class UserController extends Controller
     {
         $request->validate([
             'name'                  => 'required',
+            'role'                  => 'required',
             'email'                 => 'required|email|unique:users',
             'image'                 => 'required|image|mimes:jpg,png,jpeg,bmp',
             'password'              => 'required|min:3',
@@ -118,7 +119,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::findOrFail($id);
-        return view('admin.user.show', compact('user'));
+        return view('admin.user.edit', compact('user'));
     }
 
     /**
