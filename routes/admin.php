@@ -1,12 +1,13 @@
 <?php 
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\{CategoryController, DashboardController, MemberController, CategoryPostController, PortofolioController, TagController, PostController, ContactController, UserController};
+use App\Http\Controllers\Admin\{CategoryController, DashboardController, MemberController, CategoryPostController, PortofolioController, TagController, PostController, ContactController, UserController, TestimonialController};
 
 // Route Admin
 Route::middleware(['auth'])->group(function() {
     Route::get('dashboard', DashboardController::class)->name('dashboard');
     Route::resource('member', MemberController::class);
+    Route::resource('testimonial', TestimonialController::class);
     Route::resource('user', UserController::class);
     Route::get('portofolios/json', [PortofolioController:: class, 'json'])->name('admin.portofolio.json');
     Route::resource('portofolios', PortofolioController::class);

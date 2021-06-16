@@ -115,6 +115,28 @@
                     </ul>
                 </div>
             </li>
+            <li class="nav-item ">
+                <span class="nav-link  collapsed  d-flex justify-content-between align-items-center"
+                    data-toggle="collapse" data-target="#testimonial-app">
+                    <span>
+                        <span class="sidebar-icon"><span class="fas fa-users"></span></span>
+                        Testimonial
+                    </span>
+                    <span class="link-arrow"><span class="fas fa-chevron-right"></span></span>
+                </span>
+                <div class="multi-level collapse  {{ (request()->is('admin/testimonial*')) ? 'show' : ''  }}" role="list"
+                    id="testimonial-app" aria-expanded="false">
+                    <ul class="flex-column nav">
+                        <li class="nav-item  {{ (Request::route()->getName() == 'testimonial.create' ? 'active' : '')  }}"><a
+                                class="nav-link" href="{{ route('testimonial.create') }}"><span>Tambah
+                                    Testimonial</span></a></li>
+                        <li class="nav-item  {{ (Request::route()->getName() == 'testimonial.index' ? 'active' : '')}}
+                                                {{ (Request::route()->getName() == 'testimonial.show' ? 'active' : '') }}
+                                                "><a class="nav-link" href="/admin/testimonial"><span>Data
+                                    Testimonial</span></a></li>
+                    </ul>
+                </div>
+            </li>
             <li class="nav-item {{ (request()->is('admin/contact')) ? 'active' : '' }}">
                 <a href="{{ route('admin.contact.index') }}" class="nav-link">
                     <span class="sidebar-icon"><span class="fas fa-envelope"></span></span>
