@@ -31,15 +31,6 @@
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <label for="role">Role</label>
-                                <input type="text"
-                                    class="form-control {{ $errors->first('role') ? 'is-invalid' : '' }}" id="role"
-                                    name="role" value="{{ old('role') ? old('role') : $user->role  }}">
-                                <div class="invalid-feedback">
-                                    {{$errors->first('role')}}
-                                </div>
-                            </div>
-                            <div class="mb-3">
                                 <label for="email">Email</label>
                                 <input type="text"
                                     class="form-control {{ $errors->first('email') ? 'is-invalid' : '' }}" id="email"
