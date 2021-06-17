@@ -30,7 +30,7 @@ class MemberController extends Controller
         $data = Member::get()->makeHidden($this->hiddenCols);
         $members = [];
         foreach($data as $member) {
-            $member['image'] = config('app.cdn') . $member->image;
+            $member['image'] = url('/') . config('app.cdn') . $member->image;
             $members[] = $member;
         }
 

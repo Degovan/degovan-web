@@ -26,7 +26,7 @@ class MemberRequest extends FormRequest
         return [
             'name' => 'required',
             'part' => 'required',
-            'image' => 'sometimes|nullable|image|mimes:jpeg,jpg,png,bmp',
+            'image' => 'mimes:jpeg,jpg,png,bmp',
             'description' => 'required',
         ];
     }

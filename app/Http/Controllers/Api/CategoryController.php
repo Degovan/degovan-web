@@ -4,13 +4,11 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Response;
 
-use App\Models\Testimonial;
+use App\Models\Category;
 
-class TestimonialController extends Controller
+class CategoryController extends Controller
 {
-    private $hiddenCols = ['created_at', 'updated_at'];
     /**
      * Display a listing of the resource.
      *
@@ -18,27 +16,7 @@ class TestimonialController extends Controller
      */
     public function index()
     {
-        $data = Testimonial::get()->makeHidden($this->hiddenCols);
-        $testimonials = [];
-        foreach($data as $testimonial) {
-            $testimonial['picture'] = url('/') . config('app.cdn') . $testimonial->picture;
-            $testimonials[] = $testimonial;
-        }
-
-        return response()->json([
-            'status' => 'ok',
-            'testimonials' => $testimonials
-        ], Response::HTTP_OK);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return response()->json(Category::get(), 200);
     }
 
     /**
@@ -60,18 +38,7 @@ class TestimonialController extends Controller
      */
     public function show($id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        return Category::find($id);
     }
 
     /**

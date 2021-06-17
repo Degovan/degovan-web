@@ -80,7 +80,7 @@ class MemberController extends Controller
         $data['image'] = $request->file('image')->store('assets/member', 'public');
 
         Member::create($data);
-        return redirect()->route('member.index')
+        return redirect('admin/member')
             ->with(['status' => 'Data Member Berhasil Ditambahkan']);
     }
 

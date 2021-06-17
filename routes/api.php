@@ -29,6 +29,16 @@ Route::namespace('App\\Http\\Controllers\\Api')->group(function() {
             'index', 'show'
         ]
     ]);
+    Route::resource('category', 'CategoryController', [
+        'only' => [
+            'index', 'show'
+        ]
+    ]);
+    Route::resource('testimonial', 'TestimonialController', [
+        'only' => [
+            'index', 'show'
+        ]
+    ]);
 });
 
 // This routes is login required

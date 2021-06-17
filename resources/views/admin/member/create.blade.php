@@ -18,7 +18,7 @@
     <div class="col-12 mb-4">
         <div class="card border-light shadow-sm components-section">
             <div class="card-body">
-                <form action="{{ route('member.store') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ url('admin/member') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="row mb-4">
                         <div class="col-lg-6 col-sm-6">

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Portofolio;
+use App\Models\{Portofolio, Category};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,17 +20,39 @@ class PortofolioController extends Controller
         'slug' => 'required',
         'description' => 'required'
     ];
+
+    /**
+     * Main Data
+     */
+    private $data;
+
+    public function __construct(Portofolio $portofolio)
+    {
+        $this->data = $portofolio;
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = Portofolio::get()->makeHidden($this->hiddenCols);
+        if( $request->category_id ) {
+            $this->data = $this->data->where('category_id', $request->category_id);
+        }
+
+        if( $request->category_slug ) {
+            $category = Cateegory::where('slug', $request->category_slug)->first();
+
+            $this->data = $this->data->where('category_id', $category ? $category->id : '');
+        }
+
+        $data = $this->data->get()->makeHidden($this->hiddenCols);
+
         $portofolios = [];
         foreach($data as $porto) {
-            $porto['images_url'] = config('app.cdn') . $porto->images_url;
+            $porto['images_url'] =  url('/') . config('app.cdn') . $porto->images_url;
             $portofolios[] = $porto;
         }
 
