@@ -52,7 +52,7 @@ class PortofolioController extends Controller
 
         $portofolios = [];
         foreach($data as $porto) {
-            $porto['images_url'] =  url('/') . config('app.cdn') . $porto->images_url;
+            $porto['images_url'] = config('app.cdn') . $porto->images_url;
             $portofolios[] = $porto;
         }
 

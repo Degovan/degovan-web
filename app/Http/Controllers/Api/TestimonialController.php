@@ -21,7 +21,7 @@ class TestimonialController extends Controller
         $data = Testimonial::get()->makeHidden($this->hiddenCols);
         $testimonials = [];
         foreach($data as $testimonial) {
-            $testimonial['picture'] = url('/') . config('app.cdn') . $testimonial->picture;
+            $testimonial['picture'] = config('app.cdn') . $testimonial->picture;
             $testimonials[] = $testimonial;
         }
 
