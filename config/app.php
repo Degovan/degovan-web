@@ -191,6 +191,10 @@ return [
         */
         Yajra\DataTables\DataTablesServiceProvider::class,
 
+        /**
+         * Laravel spatie
+         */
+        Spatie\Permission\PermissionServiceProvider::class,
     ],
 
     /*
