@@ -18,9 +18,9 @@
                         <div class="col-xl-2 col-md-4 col-sm-4 col-12">
                             <h6 class="mb-3 mb-lg-4 bold-text mt-sm-0 mt-5"><b>Contact</b></h6>
                             <ul class="list-unstyled">
-                                <li>Instagram</li>
-                                <li>Linkedin</li>
-                                <li>Whatsapp</li>
+                                <li><i class="fab fa-instagram"></i> @degovan.it</li>
+                                <li><i class="fab fa-linkedin"></i> degovan</li>
+                                <li><i class="bi bi-whatsapp"></i> +685853656272 </li>
                             </ul>
                         </div>
                     </div>

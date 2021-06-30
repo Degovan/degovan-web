@@ -24,15 +24,15 @@
                 </div>
             </div>
             <div class="col-lg-6">
-                <div class="position-relative mb-5 mb-lg-0">
-                    <img class="img-fluid rounded-3 mb-3" src="{{ asset('web-assets/img/websekolah.jpeg')}}" alt="..." />
-                    <a class="h3 fw-bolder text-decoration-none link-dark stretched-link" href="#!">Website Sekolah SMK Darul Muqomah</a>
+                <div class="position-relative">
+                    <img class="img-fluid rounded-3 mb-3" src="{{ asset('web-assets/img/SALFOOD.jpg')}}" alt="..." />
+                    <a class="h3 fw-bolder text-decoration-none link-dark stretched-link" href="#!">Landing page Website Salfood</a>
                 </div>
             </div>
             <div class="col-lg-6">
-                <div class="position-relative">
-                    <img class="img-fluid rounded-3 mb-3" src="{{ asset('web-assets/img/sd.jpeg')}}" alt="..." />
-                    <a class="h3 fw-bolder text-decoration-none link-dark stretched-link" href="#!">Project name</a>
+                <div class="position-relative mb-5 mb-lg-0">
+                    <img class="img-fluid rounded-3 mb-3" src="{{ asset('web-assets/img/websekolah.jpeg')}}" alt="..." />
+                    <a class="h3 fw-bolder text-decoration-none link-dark stretched-link" href="#!">Website Sekolah SMK Darul Muqomah</a>
                 </div>
             </div>
         </div>
