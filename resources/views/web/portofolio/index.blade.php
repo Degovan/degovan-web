@@ -41,7 +41,7 @@
 <section class="py-5 bg-light">
     <div class="container px-5 my-5">
         <h2 class="display-4 fw-bolder mb-4">Mari membangun sesuatu bersama</h2>
-        <a class="btn btn-lg btn-primary" href="#!">Kontak</a>
+        <a class="btn btn-lg btn-primary" href="https://api.whatsapp.com/send/?phone=+6285853656272">Kontak</a>
     </div>
 </section>
 @endsection
