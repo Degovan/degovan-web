@@ -5,13 +5,13 @@
     @yield('stylesheet')
     <title>{{ $title }} - Jasa Pembuatan Aplikasi, Website, dll</title>
 </head>
-<body>
-    @if (Route::currentRouteName() == 'web.home')
+<body class="d-flex flex-column h-100">
+    {{-- @if (Route::currentRouteName() == 'web.home') --}}
         @include('web.layouts.partials.navbar')
-    @endif
-    <div id="root">
+    {{-- @endif --}}
+    <main class="flex-shrink-0">
         @yield('content')
-    </div>
+    </main>
 
     @include('web.layouts.partials.footer')
     @include('web.layouts.partials.script')
